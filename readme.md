@@ -1,4 +1,4 @@
-<p align="center"><img ![](./pic/pic1_50.png =20x20) src="https://upload.wikimedia.org/wikipedia/commons/b/ba/B_logo_1.svg"></p>
+<p align="center"><img ![](./pic/pic1_50.png =2x1) src="https://upload.wikimedia.org/wikipedia/commons/b/ba/B_logo_1.svg"></p>
 
 <p align="center">
 <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
