@@ -7,13 +7,13 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
-## Bookstore system at Ethernet
+## Bookstore System at Ethernet
 
-phase 1 book store api using laravel project
-- organize books
-- search books
-- add books
-- categorise books
-- virtual shelf
+Phase 1 Book Store API using Laravel Project
+- Organize Books
+- Search Books
+- Add Books
+- Catagorize Book
+- Virtual Shelf
 
 

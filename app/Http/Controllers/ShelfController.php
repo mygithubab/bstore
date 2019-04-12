@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\shelf;
+use App\Shelf;
 use Illuminate\Http\Request;
 
 class ShelfController extends Controller
@@ -14,7 +14,9 @@ class ShelfController extends Controller
      */
     public function index()
     {
-        //
+        $shelves = Shelf::all();
+
+        return $shelves;
     }
 
     /**
@@ -24,7 +26,7 @@ class ShelfController extends Controller
      */
     public function create()
     {
-        //
+        return view('shelves.create');
     }
 
     /**
@@ -35,7 +37,9 @@ class ShelfController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $shelf = Shelf::create($request->all());
+
+        return response()->json($shelf, 201);
     }
 
     /**
@@ -44,9 +48,9 @@ class ShelfController extends Controller
      * @param  \App\shelf  $shelf
      * @return \Illuminate\Http\Response
      */
-    public function show(shelf $shelf)
+    public function show(Shelf $shelf)
     {
-        //
+        return $shelf;
     }
 
     /**
@@ -55,9 +59,9 @@ class ShelfController extends Controller
      * @param  \App\shelf  $shelf
      * @return \Illuminate\Http\Response
      */
-    public function edit(shelf $shelf)
+    public function edit(Shelf $shelf)
     {
-        //
+        
     }
 
     /**
@@ -67,9 +71,11 @@ class ShelfController extends Controller
      * @param  \App\shelf  $shelf
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, shelf $shelf)
+    public function update(Request $request, Shelf $shelf)
     {
-        //
+        $shelf->update($request->all());
+
+        return response()->json($shelf, 200);
     }
 
     /**
@@ -78,8 +84,10 @@ class ShelfController extends Controller
      * @param  \App\shelf  $shelf
      * @return \Illuminate\Http\Response
      */
-    public function destroy(shelf $shelf)
+    public function destroy(Shelf $shelf)
     {
-        //
+        $shelf->delete();
+
+        return response()->json(null, 204);
     }
 }

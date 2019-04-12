@@ -16,3 +16,9 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/shelves', 'ShelfController@index');
+Route::get('/shelves/{shelf}', 'ShelfController@show');
+Route::put('/shelves/{shelf}', 'ShelfController@update');
+Route::post('/shelves', 'ShelfController@store');
+Route::delete('/shelves/{shelf}', 'ShelfController@destroy');

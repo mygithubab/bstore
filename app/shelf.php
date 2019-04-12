@@ -2,9 +2,8 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 
-class shelf extends Model
+class Shelf extends Model
 {
-    //
+    
 }
