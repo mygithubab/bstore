@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\book;
+use App\Shelf;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -14,7 +15,9 @@ class BookController extends Controller
      */
     public function index()
     {
-        //
+        $books = Book::all();
+
+        return $books;
     }
 
     /**
@@ -35,7 +38,7 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return Book::create($request->all);
     }
 
     /**
@@ -44,9 +47,11 @@ class BookController extends Controller
      * @param  \App\book  $book
      * @return \Illuminate\Http\Response
      */
-    public function show(book $book)
+    public function show(Book $book)
     {
-        //
+        $books = Book::find($book);
+
+        return $books;
     }
 
     /**
@@ -55,9 +60,9 @@ class BookController extends Controller
      * @param  \App\book  $book
      * @return \Illuminate\Http\Response
      */
-    public function edit(book $book)
+    public function edit(Book $book)
     {
-        //
+
     }
 
     /**
@@ -67,9 +72,12 @@ class BookController extends Controller
      * @param  \App\book  $book
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, book $book)
+    public function update(Request $request, Book $book)
     {
-        //
+        $result = Book::findOrFail($book);
+        $result->update($request->all());
+
+        return $result;
     }
 
     /**
@@ -78,8 +86,35 @@ class BookController extends Controller
      * @param  \App\book  $book
      * @return \Illuminate\Http\Response
      */
-    public function destroy(book $book)
+    public function destroy(Book $book)
     {
-        //
+        Book::find($book)->delete();
+
+        return response()->json(null, 204);
     }
+
+
+    /**
+     * search books
+     *
+     * @param  \App\book  $book
+     * @return \Illuminate\Http\Response
+     */
+
+    public function search()
+
+    {
+        $param = \request()->input('oq');
+
+        if($param == '' || $param == "" || $param == null)
+        {
+            return response()->json(null, 204);
+        }
+
+        $books = Book::latest()
+            ->search($param)
+            ->paginate(20);
+        return $books;
+    }
+
 }

@@ -22,3 +22,12 @@ Route::get('/shelves/{shelf}', 'ShelfController@show');
 Route::put('/shelves/{shelf}', 'ShelfController@update');
 Route::post('/shelves', 'ShelfController@store');
 Route::delete('/shelves/{shelf}', 'ShelfController@destroy');
+
+Route::get('/books', 'BookController@index');
+Route::get('/books/{book}', 'BookController@show');
+Route::get('/search', 'BookController@search');
+Route::put('/books/{book}', 'BookController@update');
+Route::post('/books', 'BookController@store');
+Route::delete('/books/{book}', 'BookController@destroy');
+
+
