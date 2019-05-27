@@ -32,5 +32,5 @@ Route::delete('/books/{book}', 'BookController@destroy');
 
 
 Route::post('/register', 'Auth\RegisterController@register');
-Route::post('/login', 'SessionsController@store');
+// Route::post('/login', 'SessionsController@store');
 Route::post('login', 'Auth\LoginController@login');
