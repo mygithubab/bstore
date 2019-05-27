@@ -38,7 +38,8 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        return Book::create($request->all);
+        $book = Book::create($request->all());
+        return response()->json($book, 201);
     }
 
     /**
