@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Mail\Welcome;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -74,7 +75,7 @@ class RegisterController extends Controller
     protected function registered(Request $request, $user)
     {
         $user->generateToken();
-
+        \Mail::to($user)->send(new Welcome($user));
         return response()->json(['data' => $user->toArray()], 201);
     }
     

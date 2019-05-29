@@ -13,24 +13,28 @@ use Illuminate\Http\Request;
 |
 */
 
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/shelves', 'ShelfController@index');
-Route::get('/shelves/{shelf}', 'ShelfController@show');
-Route::put('/shelves/{shelf}', 'ShelfController@update');
-Route::post('/shelves', 'ShelfController@store');
-Route::delete('/shelves/{shelf}', 'ShelfController@destroy');
+Route::middleware('cors')->group(function (){
+    Route::get('/shelves', 'ShelfController@index');
+    Route::get('/shelves/{shelf}', 'ShelfController@show');
+    Route::put('/shelves/{shelf}', 'ShelfController@update');
+    Route::post('/shelves', 'ShelfController@store');
+    Route::delete('/shelves/{shelf}', 'ShelfController@destroy');
 
-Route::get('/books', 'BookController@index');
-Route::get('/books/{book}', 'BookController@show');
-Route::get('/search', 'BookController@search');
-Route::put('/books/{book}', 'BookController@update');
-Route::post('/books', 'BookController@store');
-Route::delete('/books/{book}', 'BookController@destroy');
+    Route::get('/books', 'BookController@index');
+    Route::get('/books/{book}', 'BookController@show');
+    Route::get('/search', 'BookController@search');
+    Route::put('/books/{book}', 'BookController@update');
+    Route::post('/books', 'BookController@store');
+    Route::delete('/books/{book}', 'BookController@destroy');
 
 
-Route::post('/register', 'Auth\RegisterController@register');
-// Route::post('/login', 'SessionsController@store');
-Route::post('login', 'Auth\LoginController@login');
+    Route::post('/register', 'Auth\RegisterController@register');
+    // Route::post('/login', 'SessionsController@store');
+    Route::post('login', 'Auth\LoginController@login');
+} );
+
